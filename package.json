@@ -1,0 +1,24 @@
+{
+  "name": "playlists-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "swagger:edit": "swagger project edit",
+		"swagger:start": "swagger project start",
+		"server": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "koa": "^2.3.0",
+    "koa-body": "^2.3.0",
+    "koa-logger": "^3.0.1",
+    "koa-router": "^7.2.1",
+    "pg": "^7.1.2",
+    "swagger": "^0.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "swagger-editor": "^3.1.4"
+  }
+}

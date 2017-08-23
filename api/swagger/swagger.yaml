@@ -1,0 +1,20 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Albums
+host: localhost:8080
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /albums:
+    get:
+      summary: Returns all albums.
+      description: This endpoint returns all your albums.
+      responses:
+        200:
+          description: You got your albums.
