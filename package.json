@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "swagger:edit": "swagger project edit",
-		"swagger:start": "swagger project start",
-		"server": "nodemon index.js"
+    "swagger:start": "swagger project start",
+    "server": "nodemon index.js"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
@@ -15,6 +15,7 @@
     "koa-logger": "^3.0.1",
     "koa-router": "^7.2.1",
     "pg": "^7.1.2",
+    "sequelize": "^4.7.2",
     "swagger": "^0.7.5"
   },
   "devDependencies": {
