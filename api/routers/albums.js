@@ -16,7 +16,7 @@ router
 	.get('/:id', async ctx => {
 		try {
 			const { id } = ctx.params;
-			const album = await Album.findById(id, { attributes: ['name', 'id']});
+			const album = await Album.findById(id, { attributes: ['name', 'id'] });
 			ctx.body = album;
 		} catch (e) {
 			console.log(e);

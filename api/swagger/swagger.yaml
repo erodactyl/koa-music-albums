@@ -1,20 +1,136 @@
 swagger: "2.0"
-info:
-  version: "1.0.0"
-  title: Albums
-host: localhost:8080
-basePath: /
-schemes:
-  - http
-consumes:
-  - application/json
-produces:
-  - application/json
-paths:
-  /albums:
-    get:
-      summary: Returns all albums.
-      description: This endpoint returns all your albums.
-      responses:
-        200:
-          description: You got your albums.
+info: 
+ version: "1.0.0"
+ title: Albums
+host: "localhost:8080"
+basePath: "/"
+schemes: 
+ - 
+   http
+consumes: 
+ - 
+   "application/json"
+produces: 
+ - 
+   "application/json"
+paths: 
+ "/albums": 
+  get: 
+   description: "This endpoint returns all albums."
+   responses: 
+    200: 
+     description: "You got all albums."
+  post: 
+   parameters: 
+    - 
+   name: albumName
+     in: body
+     description: "Name of the new album."
+     type: string
+     required: true
+   description: "Adds an album with specified name."
+   responses: 
+    200: 
+     description: "The album was added."
+ "/albums/{id}": 
+  parameters: 
+   - 
+   name: id
+    in: path
+    description: "Id of album"
+    type: integer
+    required: true
+  get: 
+   description: "This endpoint returns the album with specified id."
+   responses: 
+    200: 
+     description: "You got the album."
+    204: 
+     description: "Album with that id does not exist."
+  put: 
+   parameters: 
+    - 
+   name: albumName
+     in: body
+     description: "Name of the new album."
+     type: string
+     required: true
+   description: "Update the name of the album with the specified id"
+   responses: 
+    200: 
+     description: "You updated the name"
+  delete: 
+   description: "Delete the album with the specified id"
+   responses: 
+    200: 
+     description: "You deleted the album"
+ "albums/{id}/songs": 
+  parameters: 
+   - 
+   name: id
+    in: path
+    description: "Id of album"
+    type: integer
+    required: true
+  get: 
+   description: "Get all songs in the album with the specified id"
+   responses: 
+    200: 
+     description: "You got all the songs in the album"
+ "/songs": 
+  get: 
+   description: "Get all songs in all playlists"
+   responses: 
+    200: 
+     description: "You got all songs"
+  post: 
+   parameters: 
+    - 
+   name: songName
+     in: body
+     type: string
+     required: true
+    - 
+   name: albumId
+     in: body
+     type: integer
+     required: true
+   description: "Add a song with the specified name to the album with the specified id"
+   responses: 
+    200: "Your song was added"
+ "/songs/{id}": 
+  parameters: 
+   - 
+   name: id
+    in: path
+    description: "Id of album"
+    type: integer
+    required: true
+  get: 
+   description: "Get the song with the specified id"
+   responses: 
+    200: 
+     description: "You got the song"
+  put: 
+   parameters: 
+    - 
+   name: songName
+     in: body
+     description: "The new name of the song"
+     type: string
+     required: true
+    - 
+   name: albumId
+     in: body
+     description: "The new album id of the song"
+     type: integer
+     required: false
+   description: "Change the name, and the album, if needed, of a song"
+   responses: 
+    200: 
+     description: "You changed the song"
+  delete: 
+   description: "Delete the song with the specified id"
+   responses: 
+    200: 
+     description: "You deleted the song"

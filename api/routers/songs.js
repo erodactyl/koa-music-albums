@@ -39,11 +39,16 @@ router
 	})
 	.put('/:id', async ctx => {
 		const { songName: name, albumId: album_id } = ctx.request.body;
-		if (name && album_id) {
+		if (name) {
 			try {
 				const { id } = ctx.params
-				await Song.update({ name, album_id },
-					{ where: { id } });
+				if (album_id) {
+					await Song.update({ name, album_id },
+						{ where: { id } });
+				} else {
+					await Song.update({ name },
+						{ where: { id } });
+				}
 				ctx.body = { success: true };
 			} catch (e) {
 				console.log(e);
