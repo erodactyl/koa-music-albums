@@ -7,11 +7,11 @@ router
 	.get('/', async ctx => {
 		try {
 			const songs = await Song.findAll({ attributes: ['name', 'id', 'album_id'] });
-			ctx.response.status = 200;
+			ctx.status = 200;
 			ctx.body = songs;
 		} catch (e) {
 			console.log(e);
-			ctx.response.status = 500;
+			ctx.status = 500;
 			ctx.body = err.simple;
 		}
 	})
@@ -19,11 +19,11 @@ router
 		try {
 			const { id } = ctx.params;
 			const song = await Song.findById(id, { attributes: ['name', 'id', 'album_id'] });
-			ctx.response.status = 200;
+			ctx.status = 200;
 			ctx.body = song;
 		} catch (e) {
 			console.log(e);
-			ctx.response.status = 500;
+			ctx.status = 500;
 			ctx.body = err.simple;
 		}
 	})
@@ -32,15 +32,15 @@ router
 		if (name && album_id) {
 			try {
 				await Song.create({ name, album_id });
-				ctx.response.status = 201;
+				ctx.status = 201;
 				ctx.body = { success: true };
 			} catch (e) {
 				console.log(e);
-				ctx.response.status = 500;
+				ctx.status = 500;
 				ctx.body = err.simple;
 			}
 		} else {
-			ctx.response.status = 417;
+			ctx.status = 417;
 			ctx.body = err.noName;
 		}
 	})
@@ -56,15 +56,15 @@ router
 					await Song.update({ name },
 						{ where: { id } });
 				}
-				ctx.response.status = 200;
+				ctx.status = 200;
 				ctx.body = { success: true };
 			} catch (e) {
 				console.log(e);
-				ctx.response.status = 500;
+				ctx.status = 500;
 				ctx.body = err.simple;
 			}
 		} else {
-			ctx.response.status = 417;
+			ctx.status = 417;
 			ctx.body = err.noName;
 		}
 	})
@@ -72,11 +72,11 @@ router
 		try {
 			const { id } = ctx.params;
 			await Song.destroy({ where: { id } });
-			ctx.response.status = 200;
+			ctx.status = 200;
 			ctx.body = { success: true };
 		} catch (e) {
 			console.log(e);
-			ctx.response.status = 500;
+			ctx.status = 500;
 			ctx.body = err.simple;
 		}
 	});
